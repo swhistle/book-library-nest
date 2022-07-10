@@ -1,7 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { TransformInterceptor } from './common/interceptors/TransformResponse.interceptor';
-import { CatchErrorInterceptor } from './common/interceptors/CatchError.interceptor';
+import { TransformInterceptor } from './common/interceptors/transformResponse/transformResponse.interceptor';
+import { CatchErrorInterceptor } from './common/interceptors/catchError/catchError.interceptor';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);

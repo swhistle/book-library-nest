@@ -1,4 +1,4 @@
-import { TransformInterceptor } from './TransformResponse.interceptor';
+import { TransformInterceptor } from './transformResponse.interceptor';
 
 describe('TransformInterceptor', () => {
   it('should be defined', () => {

@@ -1,4 +1,4 @@
-import { CatchErrorInterceptor } from './CatchError.interceptor';
+import { CatchErrorInterceptor } from './catchError.interceptor';
 
 describe('ErrorsInterceptor', () => {
   it('should be defined', () => {
