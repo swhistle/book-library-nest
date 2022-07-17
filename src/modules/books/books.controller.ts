@@ -2,9 +2,9 @@ import { Body, Controller, Delete, Get, Param, Post, Put, UsePipes } from "@nest
 import { ValidationPipe } from '../../common/pipes/validation/validation.pipe';
 import { BooksService } from './books.service';
 import { BookDto } from './dto/book.dto';
-import { Book } from './book.schema';
+import { Book } from './schemas/book.schema';
 
-@Controller('books')
+@Controller('api/books')
 export class BooksController {
   constructor(private readonly booksService: BooksService) {}
 
