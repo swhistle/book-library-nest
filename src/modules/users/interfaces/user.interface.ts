@@ -13,5 +13,5 @@ export interface IUserPublicData {
 
 export interface IUserWithToken {
     email: string;
-    token: string;
+    access_token: string;
 }

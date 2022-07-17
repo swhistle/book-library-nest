@@ -27,8 +27,8 @@ export class AuthService {
         const token = jwt.sign({id: user._id, email: email}, process.env.JWT_SECRET);
 
         return {
-            email,
-            token
+            email: email,
+            access_token: token
         };
     }
 }
