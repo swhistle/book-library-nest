@@ -24,7 +24,7 @@ export class AuthService {
             throw new BadRequestException('User with this combination of email and password has not found');
         }
 
-        const token = jwt.sign({id: user._id, email: email}, process.env.JWT_SECRET);
+        const token = jwt.sign({email: email, password: password}, process.env.JWT_SECRET);
 
         return {
             email: email,
