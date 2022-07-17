@@ -1,7 +1,7 @@
 import { Body, Controller, Post, UsePipes } from '@nestjs/common';
 import { SignUpService } from './sign-up.service';
 import { ValidationPipe } from '../../../common/pipes/Validation/validation.pipe';
-import { UserDto } from '../dto/user.dto';
+import { UserDataDto } from '../dto/user.dto';
 
 @Controller('api/users/signup')
 export class SignUpController {
@@ -10,7 +10,7 @@ export class SignUpController {
 
     @Post()
     @UsePipes(ValidationPipe)
-    async signUp(@Body() createUser: UserDto) {
+    async signUp(@Body() createUser: UserDataDto) {
         return this.signUpService.signUp(createUser);
     }
 }

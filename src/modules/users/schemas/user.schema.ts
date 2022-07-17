@@ -19,6 +19,7 @@ export class User {
     public lastName: string;
 
     setPassword: Function;
+    validatePassword: Function;
 }
 
 export type UserDocument = User & Document;
@@ -32,3 +33,8 @@ UserSchema.methods.setPassword =  function (password: string): void {
     // Hashing user's salt and password with 1000 iterations,
     this.passwordHashed = crypto.pbkdf2Sync(password, this.salt, 1000, 64, 'sha256').toString('hex');
 }
+
+UserSchema.methods.validatePassword = function (password: string): boolean {
+    const hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64, 'sha256').toString('hex');
+    return this.passwordHashed === hash;
+};

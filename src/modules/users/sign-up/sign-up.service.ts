@@ -8,8 +8,18 @@ import { User, UserDocument } from '../schemas/user.schema';
 export class SignUpService {
     constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) {}
 
+    private async findByEmail(email): Promise<User> {
+        return this.userModel.findOne({email: email});
+    }
+
     async signUp(user: IUser): Promise<IUserPublicData> {
         const {email, password, firstName, lastName} = user;
+
+        const userWithThisEmail = await this.findByEmail(email);
+
+        if (userWithThisEmail) {
+            throw new BadRequestException('A user with this email exists!')
+        }
 
         try {
             const newUser = new this.userModel({email, firstName, lastName});
@@ -25,6 +35,5 @@ export class SignUpService {
         } catch (e) {
             throw new BadRequestException(e);
         }
-
     }
 }
