@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
-import { SignInModule } from './sign-in/sign-in.module';
+import { AuthModule } from './auth/auth.module';
 import { SignUpModule } from './sign-up/sign-up.module';
 
 @Module({
   imports: [
-    SignInModule,
+    AuthModule,
     SignUpModule,
   ]
 })
