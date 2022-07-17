@@ -1,6 +1,7 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, Post, Put, UsePipes } from "@nestjs/common";
+import { ValidationPipe } from '../../common/pipes/validation/validation.pipe';
 import { BooksService } from './books.service';
-import { IBook } from './book.model';
+import { BookDto } from './dto/book.dto';
 import { Book } from './book.schema';
 
 @Controller('books')
@@ -13,7 +14,8 @@ export class BooksController {
   }
 
   @Post()
-  async create(@Body() createBook: IBook) {
+  @UsePipes(ValidationPipe)
+  async create(@Body() createBook: BookDto) {
     return this.booksService.create(createBook);
   }
 
@@ -23,7 +25,7 @@ export class BooksController {
   }
 
   @Put(':id')
-  async update(@Param() { id }, @Body() data: IBook): Promise<Book> {
+  async update(@Param() { id }, @Body() data: BookDto): Promise<Book> {
     return this.booksService.update(id, data);
   }
 
